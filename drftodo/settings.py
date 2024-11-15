@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'app',
     'rest_framework',
     'drf_yasg',
+    'django_celery_results'
 ]
 
 MIDDLEWARE = [
@@ -159,3 +160,9 @@ SWAGGER_SETTINGS = {
         },
     },
 }
+
+CELERY_BROKER_URL = 'redis://localhost:6379/0'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TASK_SERIALIZRT = 'json'
+CELERY_TIMEZONE = 'Asia/Dhaka'
