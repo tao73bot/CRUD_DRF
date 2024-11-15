@@ -7,6 +7,7 @@ class UserSerializer(serializers.Serializer):
     email = serializers.EmailField()
     first_name = serializers.CharField()
     last_name = serializers.CharField()
+    password = serializers.CharField(write_only=True)
 
     def create(self, validated_data):
         return User.objects.create(**validated_data)
@@ -16,6 +17,7 @@ class UserSerializer(serializers.Serializer):
         instance.email = validated_data.get('email', instance.email)
         instance.first_name = validated_data.get('first_name', instance.first_name)
         instance.last_name = validated_data.get('last_name', instance.last_name)
+        instance.password = validated_data.get('password', instance.password)
         instance.save()
         return instance
 
